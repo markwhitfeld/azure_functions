@@ -7,9 +7,9 @@ module.exports = function (context, myTimer) {
     }
     context.log('JavaScript timer trigger function ran!', timeStamp);   
     
-    require('@markwhitfeld/grab_packt');
-
-    context.log('Finished Running!!!!!!', timeStamp); 
-
-    context.done();
+    var grab_packt = require('@markwhitfeld/grab_packt');
+    grab_packt.whenCompleted(function(){
+        context.done();
+        context.log('Finished Running!!!!!!', timeStamp);
+    });
 };
